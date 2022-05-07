@@ -1,8 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { breakpoints, typography } from './styles';
 
-const fontUrl = `https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap`;
-
 export const bodyStyles = css`
    font-family: ${typography.type.primary};
    background: ${(props) => props.theme.bodyBG};

@@ -55,7 +55,13 @@ export const GlobalProvider = ({ children }) => {
    };
 
    useEffect(() => {
-      dispatch({ type: FILTER_JOBS });
+      if (
+         !state.filters.title &&
+         !state.filters.location &&
+         !state.filters.fullTime
+      ) {
+         dispatch({ type: LOAD_JOBS, payload: data });
+      }
    }, [state.filters]);
 
    return (

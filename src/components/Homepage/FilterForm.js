@@ -86,6 +86,7 @@ export const FilterForm = () => {
                   <input
                      name='location'
                      type='text'
+                     value={location}
                      placeholder='Filter by location'
                      onChange={updateFilters}
                   />
@@ -234,7 +235,7 @@ const MobileForm = styled.form`
 
       .form-group {
          &:first-of-type {
-            border-right: solid 1px ${(props) => props.theme.lightText};
+            border-right: solid 1.5px ${(props) => props.theme.borderLine};
          }
       }
 
@@ -314,11 +315,11 @@ const DesktopForm = styled.form`
          }
 
          &:nth-of-type(1) {
-            border-right: 1px solid ${(props) => props.theme.lightText};
+            border-right: 1.5px solid ${(props) => props.theme.borderLine};
          }
 
          &:nth-of-type(2) {
-            border-right: 1px solid ${(props) => props.theme.lightText};
+            border-right: 1.5px solid ${(props) => props.theme.borderLine};
          }
       }
 
