@@ -6,7 +6,7 @@ Live Link [Devjobs](https://devjobs-devubong.netlify.app/)
 
 ## The challenge
 
-Your challenge is to build out this jobs board using a local `data.json` to retrieve the data. Your goal is to try to get your project looking as close to the design as possible.
+The challenge is to build out a jobs board using a local `data.json` to retrieve the data. The goal is to try to get the project looking as close to the design as possible.
 
 ## How to navigate this project
 
