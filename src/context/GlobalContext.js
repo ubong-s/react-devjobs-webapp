@@ -9,8 +9,12 @@ import {
 } from './GlobalActions';
 import reducer from './globalReducer';
 
+const getLocalStorage = () => {
+   return JSON.parse(localStorage.getItem('darkMode'));
+};
+
 const initialState = {
-   darkMode: false,
+   darkMode: getLocalStorage(),
    jobs: [],
    filteredJobs: [],
    filters: {
@@ -63,6 +67,10 @@ export const GlobalProvider = ({ children }) => {
          dispatch({ type: LOAD_JOBS, payload: data });
       }
    }, [state.filters]);
+
+   useEffect(() => {
+      localStorage.setItem('darkMode', JSON.stringify(state.darkMode));
+   }, [state.darkMode]);
 
    return (
       <GlobalContext.Provider
