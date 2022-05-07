@@ -13,8 +13,9 @@ export const Job = ({ job }) => {
       location,
       postedAt,
    } = job;
+
    return (
-      <JobWrap to={'/'} logobg={logoBackground}>
+      <JobWrap to={`/jobs/${id}`} logobg={logoBackground}>
          <article>
             <div className='logo' style={{ backgroundColor: logoBackground }}>
                <img src={logo} alt={company} />

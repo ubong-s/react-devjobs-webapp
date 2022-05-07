@@ -11,13 +11,14 @@ export const FilterForm = () => {
    const {
       filters: { title, location, fullTime },
       updateFilters,
+      filterJobs,
    } = useGlobalContext();
 
    return (
       <FilterWrap>
          <div className='container'>
             {/* Mobile Form start */}
-            <MobileForm>
+            <MobileForm onSubmit={filterJobs}>
                <div className='form-group'>
                   <SearchIcon className='icon' />
                   <input
@@ -68,7 +69,7 @@ export const FilterForm = () => {
             {/* Mobile Form End */}
 
             {/* Desktop form */}
-            <DesktopForm>
+            <DesktopForm onSubmit={filterJobs}>
                <div className='form-group'>
                   <SearchIcon className='icon' />
                   <input
@@ -115,6 +116,7 @@ export const checkBoxStyles = css`
    span {
       margin-left: 0.8rem;
       color: ${(props) => props.theme.mainText};
+      font-weight: 700;
 
       @media screen and (min-width: ${breakpoints.tablet}px) {
          margin-left: 0.75rem;

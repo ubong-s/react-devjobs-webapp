@@ -1,4 +1,5 @@
 import {
+   FETCH_SINGLE_JOB,
    FILTER_JOBS,
    LOAD_JOBS,
    TOGGLE_THEME,
@@ -30,10 +31,9 @@ export default function globalReducer(state, action) {
 
       case FILTER_JOBS:
          const {
-            jobs,
             filters: { title, location, fullTime },
          } = state;
-         let tempJobs = [...jobs];
+         let tempJobs = [...state.jobs];
 
          if (title) {
             tempJobs = tempJobs.filter((job) =>
@@ -54,6 +54,15 @@ export default function globalReducer(state, action) {
          return {
             ...state,
             filteredJobs: tempJobs,
+         };
+
+      case FETCH_SINGLE_JOB:
+         const id = action.payload;
+         let tempJob = state.jobs.find((job) => job.id.toString() === id);
+
+         return {
+            ...state,
+            singleJob: tempJob,
          };
 
       default:

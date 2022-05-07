@@ -5,6 +5,7 @@ import {
    TOGGLE_THEME,
    UPDATE_FILTERS,
    FILTER_JOBS,
+   FETCH_SINGLE_JOB,
 } from './GlobalActions';
 import reducer from './globalReducer';
 
@@ -17,6 +18,7 @@ const initialState = {
       location: '',
       fullTime: false,
    },
+   singleJob: {},
 };
 
 const GlobalContext = createContext(initialState);
@@ -35,6 +37,11 @@ export const GlobalProvider = ({ children }) => {
       dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
    };
 
+   const filterJobs = (e) => {
+      e.preventDefault();
+      dispatch({ type: FILTER_JOBS });
+   };
+
    const toggleTheme = () => {
       dispatch({ type: TOGGLE_THEME });
    };
@@ -43,12 +50,24 @@ export const GlobalProvider = ({ children }) => {
       dispatch({ type: LOAD_JOBS, payload: data });
    }, []);
 
+   const fetchSingleJob = (id) => {
+      dispatch({ type: FETCH_SINGLE_JOB, payload: id });
+   };
+
    useEffect(() => {
       dispatch({ type: FILTER_JOBS });
    }, [state.filters]);
 
    return (
-      <GlobalContext.Provider value={{ ...state, toggleTheme, updateFilters }}>
+      <GlobalContext.Provider
+         value={{
+            ...state,
+            toggleTheme,
+            updateFilters,
+            filterJobs,
+            fetchSingleJob,
+         }}
+      >
          {children}
       </GlobalContext.Provider>
    );

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { breakpoints } from '../../styles/styles';
 import styled from 'styled-components';
 import BGMobile from '../../assets/mobile/bg-pattern-header.svg';
@@ -7,6 +6,7 @@ import { ReactComponent as MoonIcon } from '../../assets/desktop/icon-moon.svg';
 import { ReactComponent as SunIcon } from '../../assets/desktop/icon-sun.svg';
 import ToggleSwitch from './ToggleSwitch';
 import { useGlobalContext } from '../../context/GlobalContext';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
    const { darkMode, toggleTheme } = useGlobalContext();
@@ -14,7 +14,9 @@ export const Header = () => {
    return (
       <HeaderWrap>
          <TopSection className='container'>
-            <h1>devjobs</h1>
+            <Link to='/'>
+               <h1>devjobs</h1>
+            </Link>
             <ToggleBtn>
                <SunIcon />
                <ToggleSwitch
