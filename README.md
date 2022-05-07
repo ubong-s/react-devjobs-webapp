@@ -27,4 +27,4 @@ Your challenge is to build out this jobs board using a local `data.json` to retr
 
 -  Unit Testing
 -  Work on the **Bonus** todo. Implement `prefers-color-scheme`
--  Refactor code, remove duplicate code especially in stylind
+-  Refactor code, remove duplicate code especially in styles
