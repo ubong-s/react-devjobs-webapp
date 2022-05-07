@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+   BrowserRouter as Router,
+   Routes,
+   Route,
+   useLocation,
+} from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header/Header';
 import { GlobalProvider } from './context/GlobalContext';
 import { HomePage } from './pages';
@@ -7,19 +13,18 @@ import { GlobalStyle } from './styles/globalStyle';
 import { Theme } from './styles/styles';
 
 function App() {
+   let location = useLocation();
    return (
       <GlobalProvider>
          <Theme>
             <GlobalStyle />
-            <Router>
-               <Header />
-               <Routes>
+            <Header />
+            <AnimatePresence exitBeforeEnter>
+               <Routes location={location} key={location.key}>
                   <Route exact path='/' element={<HomePage />} />
-               </Routes>
-               <Routes>
                   <Route exact path='jobs/:id' element={<SingleJobPage />} />
                </Routes>
-            </Router>
+            </AnimatePresence>
          </Theme>
       </GlobalProvider>
    );

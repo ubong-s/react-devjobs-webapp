@@ -2,12 +2,11 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/GlobalContext';
 import { breakpoints } from '../../styles/styles';
-import { Job } from './Job';
+import { JobCard } from './JobCard';
 
 export const JobList = () => {
    const { filteredJobs: jobs } = useGlobalContext();
    const [index, setIndex] = useState(1);
-
    let jobsPerLoad = 12;
    let factor = jobsPerLoad * index;
 
@@ -20,7 +19,7 @@ export const JobList = () => {
          ) : (
             <JobListGrid className='container'>
                {jobs.slice(0, factor).map((job) => {
-                  return <Job key={job.id} job={job} />;
+                  return <JobCard key={job.id} job={job} />;
                })}
             </JobListGrid>
          )}
@@ -79,6 +78,7 @@ const JobsEmpty = styled.div`
 const JobListGrid = styled.div`
    display: grid;
    gap: 3rem;
+   transition: all 0.3s ease-in-out;
 
    @media screen and (min-width: ${breakpoints.tablet}px) {
       grid-template-columns: repeat(2, 1fr);

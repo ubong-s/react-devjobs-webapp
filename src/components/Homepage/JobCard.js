@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../styles/styles';
 
-export const Job = ({ job }) => {
+export const JobCard = ({ job }) => {
    const {
       id,
       company,
@@ -15,23 +15,21 @@ export const Job = ({ job }) => {
    } = job;
 
    return (
-      <JobWrap to={`/jobs/${id}`} logobg={logoBackground}>
-         <article>
-            <div className='logo' style={{ backgroundColor: logoBackground }}>
-               <img src={logo} alt={company} />
-            </div>
-            <p className='contract'>
-               {postedAt} <span>&#x2022;</span> {contract}
-            </p>
-            <h3 className='position'>{position}</h3>
-            <p className='company'>{company}</p>
-            <h4 className='location'>{location}</h4>
-         </article>
-      </JobWrap>
+      <JobCardWrap to={`/jobs/${id}`} logobg={logoBackground}>
+         <div className='logo' style={{ backgroundColor: logoBackground }}>
+            <img src={logo} alt={company} />
+         </div>
+         <p className='contract'>
+            {postedAt} <span>&#x2022;</span> {contract}
+         </p>
+         <h3 className='position'>{position}</h3>
+         <p className='company'>{company}</p>
+         <h4 className='location'>{location}</h4>
+      </JobCardWrap>
    );
 };
 
-const JobWrap = styled(Link)`
+const JobCardWrap = styled(Link)`
    position: relative;
    background-color: ${(props) => props.theme.innerBG};
    padding: 0 2rem;
@@ -58,11 +56,12 @@ const JobWrap = styled(Link)`
    }
 
    .contract {
+      font-size: 0.85rem;
       margin-bottom: 0.4em;
       color: ${(props) => props.theme.lightText};
 
       span {
-         margin: 0 0.5rem;
+         margin: 0 0.25rem;
       }
    }
 
@@ -74,6 +73,7 @@ const JobWrap = styled(Link)`
 
    .company {
       margin-bottom: 1rem;
+      font-size: 0.9rem;
       color: ${(props) => props.theme.lightText};
    }
 
@@ -95,6 +95,10 @@ const JobWrap = styled(Link)`
          width: 45px;
          height: 45px;
          margin-top: -20px;
+      }
+
+      .company {
+         margin-bottom: 2rem;
       }
 
       .position {

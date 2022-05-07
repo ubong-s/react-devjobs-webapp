@@ -99,11 +99,12 @@ export const FilterForm = () => {
                      checked={fullTime}
                      onChange={updateFilters}
                   />
-                  <span>Full Time</span>
+                  <span>
+                     Full Time <span className='desktop'>Only</span>{' '}
+                  </span>
                </label>
-               <div>
-                  <button type='submit'>Search</button>
-               </div>
+
+               <button type='submit'>Search</button>
             </DesktopForm>
          </div>
       </FilterWrap>
@@ -121,6 +122,16 @@ export const checkBoxStyles = css`
 
       @media screen and (min-width: ${breakpoints.tablet}px) {
          margin-left: 0.75rem;
+
+         .desktop {
+            display: none;
+         }
+      }
+      @media screen and (min-width: ${breakpoints.desktop}px) {
+         .desktop {
+            display: initial;
+            margin-left: 0;
+         }
       }
    }
 
@@ -277,9 +288,9 @@ const DesktopForm = styled.form`
 
    @media screen and (min-width: ${breakpoints.tablet}px) {
       display: grid;
-      grid-template-columns: 0.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 0.6fr 0.5fr;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
       background: ${(props) => props.theme.innerBG};
       padding: 0 1rem;
       border-radius: 5px;
@@ -289,7 +300,7 @@ const DesktopForm = styled.form`
          display: block;
          background: ${(props) => props.theme.primary};
          color: ${(props) => props.theme.white};
-         padding: 0.5rem;
+         padding: 0.75rem;
          font-size: 1rem;
          width: 100%;
       }
@@ -298,7 +309,7 @@ const DesktopForm = styled.form`
          display: grid;
          grid-template-columns: auto 1fr;
          align-items: center;
-         gap: 1rem;
+         gap: 0.75rem;
          padding: 1.75rem 0;
 
          input {
@@ -308,6 +319,7 @@ const DesktopForm = styled.form`
             border: none;
             outline: none;
             font-size: 1rem;
+            width: 100%;
 
             &::placeholder {
                color: ${(props) => props.theme.lightText};
@@ -329,7 +341,8 @@ const DesktopForm = styled.form`
    }
 
    @media screen and (min-width: ${breakpoints.desktop}px) {
-      grid-template-columns: 1.5fr 1fr 0.5fr 0.5fr;
+      grid-template-columns: 1.5fr 1fr 0.7fr 0.4fr;
+      gap: 1.5rem;
       padding: 0 1.25rem;
 
       button {

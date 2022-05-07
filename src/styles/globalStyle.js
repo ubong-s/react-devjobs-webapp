@@ -59,6 +59,11 @@ export const bodyStyles = css`
       padding: 1rem;
       cursor: pointer;
       font-weight: ${typography.weight.bold};
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+         opacity: 0.7;
+      }
    }
 
    .container {

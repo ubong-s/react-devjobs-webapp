@@ -38,13 +38,13 @@ const HeaderWrap = styled.section`
 
    @media screen and (min-width: ${breakpoints.tablet}px) {
       background: url(${BGDesktop});
-      background-position: top left;
+      background-position: bottom left;
       background-size: cover;
       height: 160px;
    }
 
    @media screen and (min-width: ${breakpoints.desktop}px) {
-      background-position: top center;
+      background-position: bottom left;
       height: 140px;
    }
 `;
